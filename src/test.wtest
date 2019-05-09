@@ -1,0 +1,37 @@
+import Corsa.*
+import Kwid.*
+import trafic.*
+test "Chevrolet corsa Verde" {
+	var corsaVerde= new Corsa()
+	corsaVerde.color("verde")
+	assert.equals(1300,corsaVerde.peso())
+	assert.equals("verde",corsaVerde.color())
+}
+test "Renault Kwid" {
+	var kwid1 = new Kwid()
+	kwid1.gas(true)
+	assert.equals(120, kwid1.velocidadMaxima())
+	assert.equals(3,kwid1.capacidad())
+	assert.equals("azul",kwid1.color())
+	
+	var kwid2 = new Kwid()
+	kwid2.gas(false)
+	assert.equals(110, kwid2.velocidadMaxima())
+	assert.equals(4,kwid2.capacidad())
+
+}
+test "Trafic" {
+	trafic.interior(comodo)
+	trafic.motor(pulenta)
+	assert.equals(5500,trafic.peso())
+	trafic.interior(popular)
+	trafic.motor(baraton)
+	assert.equals(5500,trafic.peso())
+	
+	trafic.interior(comodo)
+	trafic.motor(baraton)
+	assert.equals(5200,trafic.peso())
+	trafic.interior(popular)
+	trafic.motor(pulenta)
+	assert.equals(5800,trafic.peso())
+}

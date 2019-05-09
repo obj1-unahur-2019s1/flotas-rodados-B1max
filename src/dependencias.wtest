@@ -1,0 +1,52 @@
+import Dependencia.*
+import Corsa.*
+import Kwid.*
+import AutoEspecial.*
+import trafic.*
+test "deportes y cultura" {
+	var deportes = new Dependencia()
+	deportes.cantEmpleados(45)
+	
+	var cachito = new Corsa()//peso 1300
+	cachito.color("rojo")
+	
+	deportes.agregarAFlota(cachito)
+	var corsaAzul = new Corsa()// 1300
+	deportes.agregarAFlota(corsaAzul)
+	corsaAzul.color("Azul")
+	var corsaVerde = new Corsa()//1300
+	deportes.agregarAFlota(corsaVerde)
+	corsaVerde.color("verde")
+	var kwidConGas = new Kwid()//1350
+	deportes.agregarAFlota(kwidConGas)
+	kwidConGas.gas(true)
+	var autoEspecial = new AutoEspecial()
+	deportes.agregarAFlota(autoEspecial)
+	autoEspecial.capacidad(5)
+	autoEspecial.velocidadMaxima(160)
+	autoEspecial.peso(1200)//1200
+	autoEspecial.color("beige")
+	assert.equals(6450, deportes.pesoTotalFlota())//6450
+	
+	//Cultura
+	var cultura = new Dependencia()
+	cultura.cantEmpleados(31)
+	cultura.agregarAFlota(cachito)
+	var kwidCultura1 = new Kwid()
+	cultura.agregarAFlota(kwidCultura1)
+	var kwidCultura2 = new Kwid()
+	cultura.agregarAFlota(kwidCultura2)
+	kwidCultura1.gas(true)
+	kwidCultura2.gas(true)
+	var kwidCultura3 = new Kwid()
+	cultura.agregarAFlota(kwidCultura3)
+	cultura.agregarAFlota(trafic)
+	trafic.interior(popular)
+	trafic.motor(baraton)
+	assert.equals(1,cultura.sum({f=>f.peso()}))
+	
+	
+	
+	
+
+}
