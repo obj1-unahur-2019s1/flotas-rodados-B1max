@@ -1,0 +1,24 @@
+import Dependencia.*
+import Pedido.*
+import Corsa.*
+import Kwid.*
+import trafic.*
+test "etapa3" {
+	var depen = new Dependencia()
+	var corsa1 = new Corsa(color="verde")
+	var corsa2 = new Corsa(color="negro")
+	//var kwid1 = new Kwid()
+	depen.agregarAFlota(corsa1)
+	depen.agregarAFlota(corsa2)
+	//depen.agregarAFlota(kwid1)
+	//depen.agregarAFlota(trafic)
+	
+	var miPedido = new Pedido()
+	miPedido.distancia(960)
+	miPedido.tiempoMaximo(8)
+	miPedido.coloresIncompatibles(#{"negro","verde"})
+	miPedido.cantPasajeros(4)
+	depen.agregarPedido(miPedido)
+	assert.equals(#{},depen.pedidosNoSatisfechos())
+
+}

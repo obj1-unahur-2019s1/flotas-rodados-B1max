@@ -1,0 +1,21 @@
+import Corsa.*
+import Pedido.*
+test "etapa2" {
+	var cachito = new Corsa()//peso 1300
+	cachito.color("rojo")
+	var miPedido = new Pedido()
+	miPedido.distancia(960)
+	miPedido.tiempoMaximo(8)
+	miPedido.coloresIncompatibles(#{"negro","azul"})
+	miPedido.cantPasajeros(4)
+	assert.that(miPedido.autoPuedeSatisfacer(cachito))
+	
+	miPedido.coloresIncompatibles(#{"negro","azul","rojo"})
+	miPedido.cantPasajeros(6)
+	assert.notThat(miPedido.autoPuedeSatisfacer(cachito))
+	
+	miPedido.acelerar()
+	miPedido.acelerar()
+	//miPedido.tiempoMaximo(6)
+	assert.equals(160,miPedido.velocidadRequerida())
+}
