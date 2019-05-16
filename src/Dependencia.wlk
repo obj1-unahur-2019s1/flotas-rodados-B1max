@@ -24,5 +24,14 @@ class Dependencia {
 	method puedeSerSatisFecho(pedido){
 		return flota.any({a => pedido.autoPuedeSatisfacer(a)})
 	}
+	method colorIncompatible(colorIn){
+		return pedidos.all{f=> f.coloresIncompatibles().contains(colorIn)}
+	}
+	method relajarTodos(){
+		pedidos.map{p=> p.relajar()}
+	}
+	method colorIncompatibles(colores){
+		return flota.flatMap{p=> p.coloresIncompatibles()}
+	}
 	
 }
